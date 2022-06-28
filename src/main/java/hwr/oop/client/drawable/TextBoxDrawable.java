@@ -1,19 +1,28 @@
 package hwr.oop.client.drawable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import org.fusesource.jansi.Ansi;
 
 public class TextBoxDrawable implements IDrawable {
 
-	private final Collection<String> history = new ArrayList<>();
+	private final Collection<String> history;
 
-	public void insert(String line) {
-		this.history.add(line);
+	public TextBoxDrawable(String... lines) {
+		this.history = new ArrayList<>(Arrays.asList(lines));
+	}
+
+	public void put(String... lines) {
+		this.history.addAll(Arrays.asList(lines));
 	}
 
 	public void remove(String line) {
 		this.history.remove(line);
+	}
+
+	public void clear() {
+		this.history.clear();
 	}
 
 	@Override

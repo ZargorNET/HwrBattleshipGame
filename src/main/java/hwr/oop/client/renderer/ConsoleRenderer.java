@@ -53,7 +53,7 @@ public class ConsoleRenderer implements IRenderer {
 	private void startScanner() {
 		var scanner = new Scanner(System.in);
 		while (this.running) {
-			var nextLine = scanner.next();
+			var nextLine = scanner.nextLine();
 			if (ClientMain.getSingleton().getCurrentScene() != null)
 				ClientMain.getSingleton().getCurrentScene().onTextInput(nextLine);
 		}

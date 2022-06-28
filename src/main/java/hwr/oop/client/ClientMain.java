@@ -19,8 +19,8 @@ public final class ClientMain {
 	private final IRenderer currentRenderer = new ConsoleRenderer();
 
 	private ClientMain() {
-		if (this.singleton == null)
-			this.singleton = this;
+		if (singleton == null)
+			singleton = this;
 
 		AnsiConsole.systemInstall();
 		setScene(new MenuScene());

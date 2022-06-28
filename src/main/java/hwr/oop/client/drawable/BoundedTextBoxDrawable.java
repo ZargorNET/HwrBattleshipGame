@@ -1,6 +1,7 @@
 package hwr.oop.client.drawable;
 
 import hwr.oop.client.util.CircularFifoQueue;
+import java.util.Arrays;
 import java.util.Collection;
 import org.fusesource.jansi.Ansi;
 
@@ -14,8 +15,12 @@ public class BoundedTextBoxDrawable implements IDrawable {
 		this.history = new CircularFifoQueue<>(this.lineHeight);
 	}
 
-	public void put(String line) {
-		history.add(line);
+	public void put(String... lines) {
+		history.addAll(Arrays.asList(lines));
+	}
+
+	public void clear() {
+		this.history.clear();
 	}
 
 	@Override
