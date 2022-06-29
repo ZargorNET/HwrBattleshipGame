@@ -18,14 +18,21 @@ public class ShipSpawner {
 	public void spawnShips() {
 		var random = new Random();
 		for (int shipLength : shipsToGenerate) {
+			var iterations = 0;
 			Ship ship;
 			do {
+				// If we end up in an state which is not possible, try completely again
+				if (iterations > 500) {
+					spawnShips();
+					return;
+				}
 				var loc = new Vector2i(
 						random.nextInt(0, gameWorld.getSize().getX()),
 						random.nextInt(0, gameWorld.getSize().getY()));
 				var orientation = Orientation.values()[random.nextInt(0, Orientation.values().length)];
 
 				ship = new Ship(loc, shipLength, orientation);
+				iterations++;
 			} while (!isLocationValid(ship));
 			gameWorld.addShip(ship);
 		}
