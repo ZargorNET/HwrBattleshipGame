@@ -18,20 +18,20 @@ public class Ship {
 		for (int i = 0; i < size; i++) {
 			switch (orientation) {
 				case NORTH:
-					previous = previous.add(0, -1);
 					locations.put(previous, true);
+					previous = previous.add(0, -1);
 					break;
 				case EAST:
-					previous = previous.add(1, 0);
 					locations.put(previous, true);
+					previous = previous.add(1, 0);
 					break;
 				case SOUTH:
-					previous = previous.add(0, 1);
 					locations.put(previous, true);
+					previous = previous.add(0, 1);
 					break;
 				case WEST:
-					previous = previous.add(-1, 0);
 					locations.put(previous, true);
+					previous = previous.add(-1, 0);
 					break;
 			}
 		}
@@ -39,6 +39,10 @@ public class Ship {
 
 	public Optional<Boolean> isAlive(Vector2i location) {
 		return Optional.ofNullable(this.locations.get(location));
+	}
+
+	public boolean hasSunk() {
+		return this.locations.values().stream().noneMatch(b -> b);
 	}
 
 	public boolean setAlive(Vector2i location, boolean alive) {

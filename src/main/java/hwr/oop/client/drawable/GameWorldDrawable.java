@@ -2,11 +2,13 @@ package hwr.oop.client.drawable;
 
 import hwr.oop.client.GameWorld;
 import hwr.oop.client.util.Vector2i;
+import lombok.Getter;
 import org.fusesource.jansi.Ansi;
 
 public class GameWorldDrawable implements IDrawable {
 
-	public GameWorld gameWorld;
+	@Getter
+	private final GameWorld gameWorld;
 
 	public GameWorldDrawable(GameWorld gameWorld) {
 		this.gameWorld = gameWorld;
@@ -23,7 +25,7 @@ public class GameWorldDrawable implements IDrawable {
 				var location = new Vector2i(x, y);
 
 				var hit = gameWorld.getHit(location);
-				char symbol = hit.map(h -> h ? 'x' : 'o').orElse('#');
+				char symbol = hit.map(h -> h ? 'x' : 'o').orElse('.');
 
 				out.a(symbol + " ");
 			}

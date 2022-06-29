@@ -28,8 +28,6 @@ public final class ClientMain {
 	}
 
 	public void setScene(IScene scene) {
-		if (currentScene != null)
-			currentScene.onSceneClose();
 		this.currentRenderer.removeAll();
 		currentScene = scene;
 		currentScene.onSceneSet();
