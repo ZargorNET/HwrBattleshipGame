@@ -20,22 +20,22 @@ public class GameWorldDrawable implements IDrawable {
 		drawXCoordinates(out);
 		// Draw world
 		for (int y = 0; y < gameWorld.getSize().getY(); y++) {
-			out.a(y + " ");
+			out.a(String.format("%02d ", y));
 			for (int x = 0; x < gameWorld.getSize().getX(); x++) {
 				var location = new Vector2i(x, y);
 
 				var hit = gameWorld.getHit(location);
 				char symbol = hit.map(h -> h ? 'x' : 'o').orElse('.');
 
-				out.a(symbol + " ");
+				out.a(symbol + "  ");
 			}
 			out.newline();
 		}
 	}
 
 	private void drawXCoordinates(Ansi out) {
-		for (int i = 0; i < gameWorld.getSize().getX(); i++) {
-			out.a(i + " ");
+		for (int x = 0; x < gameWorld.getSize().getX(); x++) {
+			out.a(String.format("%02d ", x));
 		}
 		out.newline();
 
