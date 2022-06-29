@@ -9,6 +9,8 @@ public class ShipSpawner {
 
 	private final GameWorld gameWorld;
 	private final int[] shipsToGenerate;
+	private final Random random = new Random();
+
 
 	public ShipSpawner(GameWorld gameWorld, int[] shipsToGenerate) {
 		this.gameWorld = gameWorld;
@@ -16,7 +18,7 @@ public class ShipSpawner {
 	}
 
 	public void spawnShips() {
-		var random = new Random();
+
 		for (int shipLength : shipsToGenerate) {
 			var iterations = 0;
 			Ship ship;
@@ -27,9 +29,9 @@ public class ShipSpawner {
 					return;
 				}
 				var loc = new Vector2i(
-						random.nextInt(0, gameWorld.getSize().getX()),
-						random.nextInt(0, gameWorld.getSize().getY()));
-				var orientation = Orientation.values()[random.nextInt(0, Orientation.values().length)];
+						randomInt(0, gameWorld.getSize().getX()),
+						randomInt(0, gameWorld.getSize().getY()));
+				var orientation = Orientation.values()[randomInt(0, Orientation.values().length)];
 
 				ship = new Ship(loc, shipLength, orientation);
 				iterations++;
@@ -62,5 +64,9 @@ public class ShipSpawner {
 		locs[7] = loc.add(1, 1);
 
 		return locs;
+	}
+
+	private int randomInt(int lower, int upperExclusive) {
+		return random.nextInt(upperExclusive - lower) + lower;
 	}
 }
