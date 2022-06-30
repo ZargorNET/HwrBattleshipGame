@@ -2,6 +2,8 @@ package hwr.oop.client.util;
 
 import hwr.oop.client.GameWorld;
 import hwr.oop.client.Ship;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -14,7 +16,7 @@ public class ShipSpawner {
 
 	public ShipSpawner(GameWorld gameWorld, int[] shipsToGenerate) {
 		this.gameWorld = gameWorld;
-		this.shipsToGenerate = shipsToGenerate;
+		this.shipsToGenerate = shipsToGenerate; //int[] is size of ship
 	}
 
 	public void spawnShips() {
@@ -40,7 +42,19 @@ public class ShipSpawner {
 		}
 	}
 
-	private boolean isLocationValid(Ship ship) {
+	public void spawnManualShips(ArrayList<Vector3i> position){
+		var iteration = 0;
+		for (int shipLength : shipsToGenerate) {
+			Vector2i Sposition = position.get(iteration).getsVector2i();
+			int Sorientation = position.get(iteration).getZ();
+			Ship ship = new Ship(Sposition, shipLength, Orientation.values()[Sorientation]);
+			if(isLocationValid(ship))
+				gameWorld.addShip(ship);
+			iteration++;
+		}
+	}
+
+	public boolean isLocationValid(Ship ship) {
 		for (Vector2i loc : ship.getLocations().keySet()) {
 			if (loc.getX() < 0 || loc.getY() < 0 || loc.getX() >= gameWorld.getSize().getX() || loc.getY() >= gameWorld.getSize().getY())
 				return false;

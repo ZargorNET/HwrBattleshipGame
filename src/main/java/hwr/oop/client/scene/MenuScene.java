@@ -22,7 +22,7 @@ public class MenuScene implements IScene {
 		if (matcher.matches()) {
 			var size = new Vector2i(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
 			if (size.getX() <= 50 && size.getY() <= 50 && size.getX() > 9 && size.getY() > 9) {
-				ClientMain.getSingleton().setScene(new SingePlayerScene(size));
+				ClientMain.getSingleton().setScene(new MultiplayerSetScene(size));
 			} else {
 				errorMessage.put("Spielfeld ist zu groß/zu klein! Bitte bleibe zwischen 10x10 und 50x50");
 			}
