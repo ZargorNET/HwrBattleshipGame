@@ -1,33 +1,30 @@
 package hwr.oop.client.util;
 
+import hwr.oop.client.ClientMain;
 import hwr.oop.client.GameWorld;
 import hwr.oop.client.Ship;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class ShipSpawner {
 
 	private final GameWorld gameWorld;
-	private final int[] shipsToGenerate;
 	private final Random random = new Random();
 
 
-	public ShipSpawner(GameWorld gameWorld, int[] shipsToGenerate) {
+	public ShipSpawner(GameWorld gameWorld) {
 		this.gameWorld = gameWorld;
-		this.shipsToGenerate = shipsToGenerate; //int[] is size of ship
 	}
 
-	public void spawnShips() {
+	public void generateShips() {
 
-		for (int shipLength : shipsToGenerate) {
+		for (int shipLength : ClientMain.getSingleton().getShipsToGenerate()) {
 			var iterations = 0;
 			Ship ship;
 			do {
 				// If we end up in an state which is not possible, try completely again
 				if (iterations > 500) {
-					spawnShips();
+					generateShips();
 					return;
 				}
 				var loc = new Vector2i(
@@ -39,18 +36,6 @@ public class ShipSpawner {
 				iterations++;
 			} while (!isLocationValid(ship));
 			gameWorld.addShip(ship);
-		}
-	}
-
-	public void spawnManualShips(ArrayList<Vector3i> position){
-		var iteration = 0;
-		for (int shipLength : shipsToGenerate) {
-			Vector2i Sposition = position.get(iteration).getsVector2i();
-			int Sorientation = position.get(iteration).getZ();
-			Ship ship = new Ship(Sposition, shipLength, Orientation.values()[Sorientation]);
-			if(isLocationValid(ship))
-				gameWorld.addShip(ship);
-			iteration++;
 		}
 	}
 

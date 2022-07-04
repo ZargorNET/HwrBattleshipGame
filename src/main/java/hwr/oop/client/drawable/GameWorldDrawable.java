@@ -3,15 +3,27 @@ package hwr.oop.client.drawable;
 import hwr.oop.client.GameWorld;
 import hwr.oop.client.util.Vector2i;
 import lombok.Getter;
+import lombok.Setter;
 import org.fusesource.jansi.Ansi;
 
 public class GameWorldDrawable implements IDrawable {
 
 	@Getter
-	private final GameWorld gameWorld;
+	@Setter
+	private GameWorld gameWorld;
+
+	@Getter
+	@Setter
+	private boolean showAllShips;
 
 	public GameWorldDrawable(GameWorld gameWorld) {
 		this.gameWorld = gameWorld;
+		this.showAllShips = false;
+	}
+
+	public GameWorldDrawable(GameWorld gameWorld, boolean showAllShips) {
+		this(gameWorld);
+		this.showAllShips = showAllShips;
 	}
 
 	@Override
@@ -26,6 +38,11 @@ public class GameWorldDrawable implements IDrawable {
 
 				var hit = gameWorld.getHit(location);
 				char symbol = hit.map(h -> h ? 'x' : 'o').orElse('.');
+
+				if (this.showAllShips) {
+					if (this.gameWorld.getShipAt(location).isPresent())
+						symbol = 'x';
+				}
 
 				out.a(symbol + "  ");
 			}

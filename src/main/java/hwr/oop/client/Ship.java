@@ -45,6 +45,10 @@ public class Ship {
 		return this.locations.values().stream().noneMatch(b -> b);
 	}
 
+	public int getSize() {
+		return this.locations.size();
+	}
+
 	public boolean setAlive(Vector2i location, boolean alive) {
 		if (!this.locations.containsKey(location))
 			return false;

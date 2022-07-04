@@ -49,6 +49,10 @@ public class GameWorld {
 		return this.ships.add(ship);
 	}
 
+	public void addAllShips(Collection<Ship> ships) {
+		this.ships.addAll(ships);
+	}
+
 	public Optional<Ship> setAliveAt(Vector2i location, boolean alive) {
 		var ship = getShipAt(location);
 		if (ship.isEmpty())

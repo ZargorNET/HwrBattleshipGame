@@ -18,6 +18,12 @@ public final class ClientMain {
 	@Getter
 	private final IRenderer currentRenderer = new ConsoleRenderer();
 
+	@Getter
+/*
+	private final int[] shipsToGenerate =  new int[]{5, 4, 4, 3, 3, 3, 2, 2, 2, 2};
+*/
+	private final int[] shipsToGenerate = new int[]{5, 2};
+
 	private ClientMain() {
 		if (singleton == null)
 			singleton = this;

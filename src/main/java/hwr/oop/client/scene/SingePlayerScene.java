@@ -50,7 +50,7 @@ public class SingePlayerScene implements IScene {
 				"Schießformat: X,Y"
 		));
 
-		new ShipSpawner(gameWorld, new int[]{5, 4, 4, 3, 3, 3, 2, 2, 2, 2}).spawnShips();
+		new ShipSpawner(gameWorld).generateShips();
 	}
 
 	private void onCheat() {

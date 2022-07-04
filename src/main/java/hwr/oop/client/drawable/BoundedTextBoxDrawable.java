@@ -15,6 +15,12 @@ public class BoundedTextBoxDrawable implements IDrawable {
 		this.history = new CircularFifoQueue<>(this.lineHeight);
 	}
 
+	public BoundedTextBoxDrawable(int lineHeight, String... initial) {
+		this.lineHeight = lineHeight;
+		this.history = new CircularFifoQueue<>(this.lineHeight);
+		this.history.addAll(Arrays.asList(initial));
+	}
+
 	public void put(String... lines) {
 		history.addAll(Arrays.asList(lines));
 	}
