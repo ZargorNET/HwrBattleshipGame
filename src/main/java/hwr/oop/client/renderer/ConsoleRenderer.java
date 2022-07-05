@@ -5,11 +5,13 @@ import hwr.oop.client.drawable.IDrawable;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Scanner;
+import lombok.Getter;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class ConsoleRenderer implements IRenderer {
 
+	@Getter
 	private final LinkedList<IDrawable> drawables = new LinkedList<>();
 	private boolean running = false;
 

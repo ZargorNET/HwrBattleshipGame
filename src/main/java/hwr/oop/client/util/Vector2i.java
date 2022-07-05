@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class Vector2i {
 
-	private int x, y;
+	private int x;
+	private int y;
 
 	public Vector2i(int x, int y) {
 		this.x = x;

@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 
 public class CircularFifoQueue<T> implements Queue<T> {
 
-	private LinkedList<T> inner = new LinkedList<>();
-	private int capacity;
+	private final LinkedList<T> inner = new LinkedList<>();
+	private final int capacity;
 
 	public CircularFifoQueue(int capacity) {
 		if (capacity < 0)

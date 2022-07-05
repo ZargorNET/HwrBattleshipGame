@@ -40,6 +40,7 @@ public class MultiplayerSetScene implements IScene {
 		var nextShip = getNextShipLength(gameWorld);
 		this.gameWorldDrawable.setGameWorld(gameWorld);
 
+		// wont be null
 		setShipDialogue(nextShip.get(), line, gameWorld);
 
 		nextShip = getNextShipLength(gameWorld);

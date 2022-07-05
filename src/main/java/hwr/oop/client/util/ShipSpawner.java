@@ -17,12 +17,12 @@ public class ShipSpawner {
 	}
 
 	public void generateShips() {
-
+		gameWorld.getShips().clear();
 		for (int shipLength : ClientMain.getSingleton().getShipsToGenerate()) {
 			var iterations = 0;
 			Ship ship;
 			do {
-				// If we end up in an state which is not possible, try completely again
+				// If we end up in a state which is not possible, try completely again
 				if (iterations > 500) {
 					generateShips();
 					return;
@@ -50,12 +50,12 @@ public class ShipSpawner {
 		return true;
 	}
 
-	private Vector2i[] getAdjacentLocations(Vector2i loc) {
+	Vector2i[] getAdjacentLocations(Vector2i loc) {
 		var locs = new Vector2i[8];
 
 		locs[0] = loc.add(-1, -1);
 		locs[1] = loc.add(0, -1);
-		locs[2] = loc.add(1, 1);
+		locs[2] = loc.add(1, -1);
 		locs[3] = loc.add(-1, 0);
 		locs[4] = loc.add(1, 0);
 		locs[5] = loc.add(-1, 1);
@@ -65,7 +65,7 @@ public class ShipSpawner {
 		return locs;
 	}
 
-	private int randomInt(int lower, int upperExclusive) {
+	int randomInt(int lower, int upperExclusive) {
 		return random.nextInt(upperExclusive - lower) + lower;
 	}
 }

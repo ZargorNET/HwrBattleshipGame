@@ -16,9 +16,14 @@ This repository contains a student project created for an ongoing lecture on obj
 
 [TODO]: # (For each feature implemented, add a row to the table!)
 
-| Number | Feature | Tests |
-|--------|---------|-------|
-| 1      | /       | /     |
+| Number | Feature                                   | Tests |
+|--------|-------------------------------------------|-------|
+| 1      | Dynamic Map Size                          | /     |
+| 2      | Singleplayer Mode                         | /     |
+| 3      | Multiplayer Mode                          | /     |
+| 4      | Set your own ships in Multiplayer Mode    | /     |
+| 5      | Automatic Ship Generation in Singleplayer | /     |
+| 6      | Restart the game after a game             | /     |
 
 
 ## Additional Dependencies

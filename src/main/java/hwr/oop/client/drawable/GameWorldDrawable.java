@@ -39,10 +39,9 @@ public class GameWorldDrawable implements IDrawable {
 				var hit = gameWorld.getHit(location);
 				char symbol = hit.map(h -> h ? 'x' : 'o').orElse('.');
 
-				if (this.showAllShips) {
-					if (this.gameWorld.getShipAt(location).isPresent())
-						symbol = 'x';
-				}
+				if (this.showAllShips && this.gameWorld.getShipAt(location).isPresent())
+					symbol = 'x';
+
 
 				out.a(symbol + "  ");
 			}

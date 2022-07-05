@@ -19,16 +19,14 @@ public final class ClientMain {
 	private final IRenderer currentRenderer = new ConsoleRenderer();
 
 	@Getter
-
 	private final int[] shipsToGenerate =  new int[]{5, 4, 4, 3, 3, 3, 2, 2, 2, 2};
 
-	private ClientMain() {
+	public ClientMain() {
 		if (singleton == null)
 			singleton = this;
 
 		AnsiConsole.systemInstall();
 		setScene(new MenuScene());
-		this.currentRenderer.start();
 	}
 
 	public void setScene(IScene scene) {
@@ -38,6 +36,7 @@ public final class ClientMain {
 	}
 
 	public static void main(String[] args) {
-		new ClientMain();
+		var main = new ClientMain();
+		main.getCurrentRenderer().start();
 	}
 }

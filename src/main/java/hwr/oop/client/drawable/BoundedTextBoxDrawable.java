@@ -8,7 +8,7 @@ import org.fusesource.jansi.Ansi;
 public class BoundedTextBoxDrawable implements IDrawable {
 
 	public final int lineHeight;
-	private final Collection<String> history;
+	final Collection<String> history;
 
 	public BoundedTextBoxDrawable(int lineHeight) {
 		this.lineHeight = lineHeight;

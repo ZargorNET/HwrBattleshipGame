@@ -7,7 +7,7 @@ import org.fusesource.jansi.Ansi;
 
 public class TextBoxDrawable implements IDrawable {
 
-	private final Collection<String> history;
+	final Collection<String> history;
 
 	public TextBoxDrawable(String... lines) {
 		this.history = new ArrayList<>(Arrays.asList(lines));
