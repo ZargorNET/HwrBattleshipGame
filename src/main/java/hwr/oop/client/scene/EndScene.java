@@ -21,7 +21,7 @@ public class EndScene implements IScene {
 		if (line.equalsIgnoreCase("R"))
 			ClientMain.getSingleton().setScene(new MenuScene());
 		if (line.equalsIgnoreCase("Q"))
-			System.exit(0);
+			ClientMain.getSingleton().getCurrentRenderer().stop();
 
 		renderer.render();
 	}

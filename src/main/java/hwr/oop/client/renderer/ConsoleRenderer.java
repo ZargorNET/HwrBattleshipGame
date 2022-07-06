@@ -27,6 +27,11 @@ public class ConsoleRenderer implements IRenderer {
 		running = false;
 	}
 
+	@Override
+	public boolean isStarted() {
+		return this.running;
+	}
+
 	public void draw(Collection<IDrawable> drawables) {
 		this.drawables.addAll(drawables);
 	}

@@ -9,6 +9,8 @@ public interface IRenderer {
 
 	void stop();
 
+	boolean isStarted();
+
 	void draw(Collection<IDrawable> drawables);
 
 	void draw(IDrawable drawable);
@@ -18,4 +20,6 @@ public interface IRenderer {
 	void removeAll();
 
 	void render();
+
+	Collection<IDrawable> getDrawables();
 }
