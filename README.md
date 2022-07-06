@@ -18,12 +18,11 @@ But there are limitations. The minimum size is 10x10 (so that all ships fit) and
 probably already too big.
 
 An interesting problem which occurred during development:
-Coming from a game dev like structure, we first had a rendering system which updates itself every second (1 FPS),
-because this makes state changes much easier e.x. you do not have to think about updating the state prematurely but just
-in time.
-But while this system worked, it broke when typing an input because as it turns out, clearing a console is not as
-straightforward as it seems due to the fact that it clears the input line as well.
-So, we had to reside to updating the console every "enter press" which, as earlier said, came with some challenges.
+Coming from a game dev like structure, we first had a rendering system which updates every second (1 FPS),
+because this makes state changes much easier e.x. you do not have to think about updating the state prematurely but
+could do it just in time. But while this system worked, it had broken when typing an input because as it turns out,
+clearing a console is not as straightforward as it seems due to the fact that it clears the input line as well. So, we
+had to reside to updating the console every "enter press" which, as earlier said, came with some challenges.
 
 ## Feature List
 
@@ -37,7 +36,6 @@ So, we had to reside to updating the console every "enter press" which, as earli
 | 4      | Set your own ships in Multiplayer Mode    | yes   |
 | 5      | Automatic Ship Generation in Singleplayer | yes   |
 | 6      | Restart the game after a game             | yes   |
-
 
 ## Additional Dependencies
 
