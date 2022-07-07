@@ -24,6 +24,13 @@ class SingePlayerSceneTest {
 	}
 
 	@Test
+	void test_shipGeneration() {
+		var newScene = new SingePlayerScene(new Vector2i(10, 10));
+		newScene.onSceneSet();
+		Assertions.assertEquals(10, newScene.getGameWorld().getShips().size());
+	}
+
+	@Test
 	void test_invalidOnTextInput() {
 		scene.onTextInput("xx,xxd,dw");
 		Assertions.assertTrue(scene.getGameWorld().getHits().isEmpty());
