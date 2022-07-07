@@ -17,10 +17,9 @@ import java.util.Optional;
 public class MultiplayerSetScene implements IScene {
 
 	private final IRenderer renderer = ClientMain.getSingleton().getCurrentRenderer();
-
 	private final BoundedTextBoxDrawable eventLog = new BoundedTextBoxDrawable(10);
-	private final GameWorld gameWorldPlayer1;
-	private final GameWorld gameWorldPlayer2;
+	final GameWorld gameWorldPlayer1;
+	final GameWorld gameWorldPlayer2;
 	private final TextBoxDrawable playerText = new TextBoxDrawable("Es ist dran Spieler 1:");
 	private final BoundedTextBoxDrawable shipLength = new BoundedTextBoxDrawable(1, "Schiffslänge: " + ClientMain.getSingleton().getShipsToGenerate()[0]);
 	private final GameWorldDrawable gameWorldDrawable;
@@ -40,7 +39,9 @@ public class MultiplayerSetScene implements IScene {
 		var nextShip = getNextShipLength(gameWorld);
 		this.gameWorldDrawable.setGameWorld(gameWorld);
 
-		// wont be null
+		if (nextShip.isEmpty())
+			throw new IllegalStateException("ship cannot be null");
+
 		setShipDialogue(nextShip.get(), line, gameWorld);
 
 		nextShip = getNextShipLength(gameWorld);
@@ -102,7 +103,7 @@ public class MultiplayerSetScene implements IScene {
 		var index = gameWorld.getShips().size();
 		var arraySize = ClientMain.getSingleton().getShipsToGenerate().length;
 
-		if (index < 0 || index >= arraySize)
+		if (index >= arraySize)
 			return Optional.empty();
 
 		return Optional.of(ClientMain.getSingleton().getShipsToGenerate()[index]);

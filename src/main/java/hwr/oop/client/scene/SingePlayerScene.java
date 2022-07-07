@@ -11,9 +11,11 @@ import hwr.oop.client.renderer.IRenderer;
 import hwr.oop.client.util.LocationParser;
 import hwr.oop.client.util.ShipSpawner;
 import hwr.oop.client.util.Vector2i;
+import lombok.Getter;
 
 public class SingePlayerScene implements IScene {
 
+	@Getter
 	private final GameWorld gameWorld;
 	private final IRenderer renderer = ClientMain.getSingleton().getCurrentRenderer();
 	private final BoundedTextBoxDrawable eventLog = new BoundedTextBoxDrawable(10);

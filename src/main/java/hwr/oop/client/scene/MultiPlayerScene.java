@@ -26,18 +26,14 @@ public class MultiPlayerScene implements IScene {
 
 	@Override
 	public void onTextInput(String line) {
-		if (line.equalsIgnoreCase("cheat")) {
-			onCheat();
+		var locationOptional = LocationParser.parse(line);
+		if (locationOptional.isPresent()) {
+			var location = locationOptional.get();
+			onLocation(location);
 		} else {
-			var locationOptional = LocationParser.parse(line);
-			if (locationOptional.isPresent()) {
-				var location = locationOptional.get();
-				onLocation(location);
-			} else {
-				eventLog.put("Invalides Koordinatenformat!");
-			}
-			renderer.render();
+			eventLog.put("Invalides Koordinatenformat!");
 		}
+		renderer.render();
 	}
 
 	@Override
@@ -57,12 +53,6 @@ public class MultiPlayerScene implements IScene {
 		));
 
 		eventLog.put("Es startet: Spieler 1");
-	}
-
-	private void onCheat() {
-		gameWorldPlayer1.getShips().forEach(ship -> ship.getLocations().keySet().forEach(gameWorldPlayer1::hit));
-		gameWorldPlayer2.getShips().forEach(ship -> ship.getLocations().keySet().forEach(gameWorldPlayer2::hit));
-		eventLog.put("Aha! Wir haben einen Schummler!");
 	}
 
 	private void onLocation(Vector2i location) {

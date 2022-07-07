@@ -19,6 +19,16 @@ class CircularFifoQueueTest {
 	}
 
 	@Test
+	void test_negativeCapacity() {
+		try {
+			new CircularFifoQueue<>(-5);
+			Assertions.fail("should have thrown");
+		} catch (IllegalArgumentException success) {
+			// Success
+		}
+	}
+
+	@Test
 	void test_capacity() {
 		Assertions.assertEquals(5, queue.capacity());
 	}
