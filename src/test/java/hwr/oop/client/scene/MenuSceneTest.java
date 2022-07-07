@@ -18,7 +18,7 @@ class MenuSceneTest {
 
 	@Test
 	void test_validOnTextInput() {
-		menuScene.onTextInput("20,20");
+		menuScene.onTextInput("20,12");
 		Assertions.assertTrue(hasBeenSuccessful());
 	}
 
