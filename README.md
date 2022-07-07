@@ -7,7 +7,10 @@ HWR Berlin (summer term 2022).
 
 ## Abstract
 
-A simple console based battleship game.
+A simple (now) console based battleship game.
+One could add other render methods easily as well, because the project uses an abstraction i.e. an interface which can
+be implemented e.x. for a web game using JSPs.
+
 It supports 2 game modes:
 
 - **Singeplayer** which is basically Mine Sweeper, but without the mines
